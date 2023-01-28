@@ -1,11 +1,21 @@
+import {BackToTop} from "./footer/BackToTop";
+import {Copyright} from "./footer/Copyright";
+import {FooterNav} from "./footer/FooterNav";
+
 export const Footer = () => {
   return (
     <>
-      <section className="container mx-auto px-4">top footer</section>
+      <section className="container mx-auto px-4">
+        <FooterNav></FooterNav>
+      </section>
 
-      <div className="border-t border-t-neutral-400"></div>
+      <div className="relative border-t border-t-neutral-400">
+        <BackToTop></BackToTop>
+      </div>
 
-      <section className="container mx-auto px-4">bottom footer</section>
+      <section className="container mx-auto px-4">
+        <Copyright></Copyright>
+      </section>
     </>
   );
 };

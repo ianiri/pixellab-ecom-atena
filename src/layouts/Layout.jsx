@@ -4,7 +4,6 @@ import {Header} from "../components/common/Header";
 
 export const black = '#171717';
 export const white = '#fff';
-export const gray = '#f2f2f2';
 const mobileHeaderHeight = 60;
 const desktopHeaderSize = 80;
 
@@ -47,20 +46,16 @@ export const Layout = ({ children }) => {
     justify-content: space-between;
   `;
 
-  const footerCss = css`
-    background-color: ${gray};
-  `;
-
   return (
     <div className={gridCss}>
-      <header className={headerCss}>
+      <header className={`${headerCss} z-10`}>
         <Header></Header>
       </header>
 
       <div className={mainAreaCss}>
         {children}
 
-        <footer className={footerCss}>
+        <footer className="bg-zinc-100 mt-10">
           <Footer></Footer>
         </footer>
       </div>

@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { TiThLargeOutline } from 'react-icons/ti';
+import { BiRectangle } from 'react-icons/bi';
 
 const buttonClasses =
-  'flex justify-center items-center border-l border-zinc-200 w-20 h-20 transition-colors hover:bg-neutral-900';
+  'flex justify-center items-center border-l-2 border-zinc-200 w-20 h-20 transition-colors hover:bg-neutral-900';
 
 export const GridControls = ({ set = () => {} }) => {
   const [itemsPerRow, setItemsPerRow] = useState('4/row');
@@ -9,7 +11,7 @@ export const GridControls = ({ set = () => {} }) => {
   console.log('render grid controls');
 
   return (
-    <ul className="border border-l-0 border-zinc-200 hidden lg:flex">
+    <ul className="border-2 border-l-0 border-zinc-200 hidden lg:flex">
       <li>
         <button
           type="button"
@@ -22,7 +24,7 @@ export const GridControls = ({ set = () => {} }) => {
             set('1/row');
           }}
         >
-          1
+          <BiRectangle size="25"></BiRectangle>
         </button>
       </li>
 
@@ -38,7 +40,8 @@ export const GridControls = ({ set = () => {} }) => {
             set('2/row');
           }}
         >
-          2
+          <BiRectangle size="25"></BiRectangle>
+          <BiRectangle size="25"></BiRectangle>
         </button>
       </li>
 
@@ -54,7 +57,7 @@ export const GridControls = ({ set = () => {} }) => {
             set('4/row');
           }}
         >
-          4
+          <TiThLargeOutline size="40"></TiThLargeOutline>
         </button>
       </li>
     </ul>
