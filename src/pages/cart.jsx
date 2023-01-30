@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import {CartControls} from '../components/cart/CartControls';
 import {Layout} from '../layouts/Layout';
 
 const CartPage = () => {
@@ -10,7 +11,10 @@ const CartPage = () => {
 
       <Layout>
         <main className="container px-4 mx-auto">
-          <h1>Welcome to the cart page</h1>
+        <header className="flex justify-between">
+            <div>{/* de adaugat Continue shopping styled + func*/}</div>
+            <CartControls></CartControls>
+          </header>
         </main>
       </Layout>
     </>
