@@ -1,12 +1,9 @@
 import Image from 'next/legacy/image';
 import Link from 'next/link';
+import {ProductPrice} from './ProductPrice';
 
 export const ProductTile = ({ product }) => {
   const { title, image, price, id } = product;
-  const formattedPrice = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(price);
 
   return (
     <article className="text-center">
@@ -32,7 +29,7 @@ export const ProductTile = ({ product }) => {
       </header>
 
       <section>
-        <span>{formattedPrice}</span>
+        <ProductPrice product={product}></ProductPrice>
       </section>
 
       <footer>{/* add to cart */}</footer>
