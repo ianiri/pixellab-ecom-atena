@@ -3,6 +3,7 @@ import {UiContext} from '@/src/pages/_app';
 import {css} from '@emotion/css';
 import { useContext } from 'react';
 import { ProductTile } from '.';
+import {Loader} from '../common/Loader';
 
 export const ProductGrid = () => {
   const {products, loading, error} = useProducts();
@@ -12,7 +13,11 @@ export const ProductGrid = () => {
   const itemsPerRow = parseInt(perRow);
 
   if (loading === true) {
-    return <>loading</>;
+    return (
+      <div className="container mx-auto px-4">
+        <Loader></Loader>
+      </div>
+    );
   }
 
   if (error.length > 0) {
@@ -36,13 +41,14 @@ export const ProductGrid = () => {
   return (
     <ul className={gridCss}>
       {products.map((product) => {
+        const { id } = product;
+
         return (
-          <li key={product.id}>
-            <ProductTile product={product}></ProductTile>
+          <li key={id}>
+            <ProductTile product={product} path={`products/${id}`}></ProductTile>
           </li>
         );
       })}
     </ul>
   );
 };
-

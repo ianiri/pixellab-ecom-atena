@@ -1,15 +1,16 @@
 import Image from 'next/legacy/image';
 import Link from 'next/link';
+import {AddToCart} from './AddToCart';
 import {ProductPrice} from './ProductPrice';
 
-export const ProductTile = ({ product }) => {
-  const { title, image, price, id } = product;
+export const ProductTile = ({ product, path }) => {
+  const { title, image, id } = product;
 
   return (
-    <article className="text-center">
+    <article className="h-full flex flex-col justify-between items-center text-center">
       <header>
         <div>
-          <Link href={`products/${id}`} title={title}>
+          <Link href={path} title={title}>
             <Image
               alt={`Image for product ${title}`}
               src={image}
@@ -22,7 +23,7 @@ export const ProductTile = ({ product }) => {
         </div>
 
         <h1>
-          <Link href={`products/${id}`} title={title}>
+          <Link href={path} title={title}>
             {title}
           </Link>
         </h1>
@@ -32,7 +33,9 @@ export const ProductTile = ({ product }) => {
         <ProductPrice product={product}></ProductPrice>
       </section>
 
-      <footer>{/* add to cart */}</footer>
+      <footer className="mt-2">
+        <AddToCart product={product}></AddToCart>
+      </footer>
     </article>
   );
 };
