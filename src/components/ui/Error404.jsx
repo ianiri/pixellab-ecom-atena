@@ -80,7 +80,7 @@ export const Error404 = () => {
   `;
 
   return (
-    <section className="text-center text-9xl font-bold mb-28 my-4">
+    <section className="text-center font-bold text-8xl mb-20 lg:text-9xl lg:mb-28 my-4">
       <span className={`${container} ${firstNumberContainer}`}>
         <span className={`${container} ${firstNumber}`}>4</span>
       </span>

@@ -24,7 +24,7 @@ export const ProductDisplay = ({ productId }) => {
     return (
       <>
         <Error404></Error404>
-        <div className="container text-center text-black font-bold px-4">Either we broke something or the product you are searching for is not available.</div>
+        <div className="container text-center text-black font-bold px-4 mx-auto">Either we broke something or the product you are searching for is not available.</div>
       </>
     );
   }
@@ -65,7 +65,7 @@ export const ProductDisplay = ({ productId }) => {
       <div className="my-10">
         <Separator></Separator>
       </div>
-      <section>
+      <section className="container mx-auto px-4">
         <RelatedProducts productCategory={category} productId={id}></RelatedProducts>
       </section>
     </article>
