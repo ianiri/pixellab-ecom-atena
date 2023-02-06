@@ -6,3 +6,4 @@ export * from './AddToCart';
 export * from './ProductPrice';
 export * from './ProductRatings';
 export * from './RelatedProducts';
+export * from './Pagination';

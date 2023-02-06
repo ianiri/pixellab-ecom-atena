@@ -5,6 +5,7 @@ import Head from 'next/head';
 import {GridControls, ProductGrid} from '../components/catalog';
 import {Layout} from '../layouts/Layout';
 import {CartControls} from '../components/cart/CartControls';
+import {Pagination} from '../components/catalog/Pagination';
 
 export default function Home() {
   return (
@@ -24,6 +25,9 @@ export default function Home() {
 
           <section className="mt-16">
             <ProductGrid></ProductGrid>
+          </section>
+          <section>
+            <Pagination></Pagination>
           </section>
         </main>
       </Layout>
