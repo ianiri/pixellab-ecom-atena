@@ -1,5 +1,6 @@
 import {createContext, useEffect, useState} from 'react';
 import {useLocalStorage} from 'usehooks-ts';
+import {CartContext} from '../contexts/CartContex';
 import './../styles/index.css';
 
 export const UiContext = createContext();
@@ -25,7 +26,9 @@ export default function App({ Component, pageProps }) {
       setPagination
       }}
     >
-      <Component {...pageProps} />
+      <CartContext>
+        <Component {...pageProps} />;
+      </CartContext>
     </UiContext.Provider>
   );
 }

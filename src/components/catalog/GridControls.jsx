@@ -2,15 +2,21 @@ import { TiThLargeOutline } from 'react-icons/ti';
 import { BiRectangle } from 'react-icons/bi';
 import {UiContext} from '@/src/pages/_app';
 import {useContext} from 'react';
+import {useIsMobile} from '@/src/hooks';
 
 const buttonClasses =
   'flex justify-center items-center border-l-2 border-zinc-200 w-20 h-20 transition-colors hover:bg-neutral-900';
 
 export const GridControls = () => {
   const{itemsPerRow, setItemsPerRow} = useContext(UiContext);
+  const isMobile = useIsMobile();
+
+  if (isMobile === true) {
+    return <></>;
+  }
 
   return (
-    <ul className="border-2 border-r-0 border-l-0 border-zinc-200 hidden lg:flex">
+    <ul className="border-2 border-r-0 border-l-0 border-zinc-200 lg:flex">
       <li>
         <button
           type="button"

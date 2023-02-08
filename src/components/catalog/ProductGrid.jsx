@@ -1,16 +1,22 @@
 import {useProducts} from '@/src/hooks';
 import {UiContext} from '@/src/pages/_app';
 import {css} from '@emotion/css';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductTile } from '.';
 import {Loader} from '../common/Loader';
 
 export const ProductGrid = () => {
   const {products, loading, error} = useProducts();
-  const {itemsPerRow: perRow} = useContext(UiContext);
+  const {itemsPerRow: perRow, pagination} = useContext(UiContext);
+  const [paginatedProducts, setPaginationProducts] = useState([]);
+  const {perPage, page} = pagination;
 
   // useMemo
   const itemsPerRow = parseInt(perRow);
+
+  useEffect(() => {
+    setPaginationProducts(products.slice().splice(perPage * (page - 1), perPage));
+  }, [products, setPaginationProducts, perPage, page]);
 
   if (loading === true) {
     return (
@@ -40,7 +46,7 @@ export const ProductGrid = () => {
 
   return (
     <ul className={gridCss}>
-      {products.map((product) => {
+      {paginatedProducts.map((product) => {
         const { id } = product;
 
         return (
