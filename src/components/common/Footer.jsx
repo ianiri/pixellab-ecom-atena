@@ -9,10 +9,6 @@ export const Footer = () => {
       <section className="container mx-auto px-4">
         <FooterNav></FooterNav>
       </section>
-
-      {/* <div className="relative border-t border-t-neutral-400">
-        <BackToTop></BackToTop>
-      </div> */}
       <Separator>
         <BackToTop></BackToTop>
       </Separator>

@@ -6,7 +6,7 @@ import {ProductTile} from "./ProductTile";
 
 export const RelatedProducts = ({productCategory, productId}) => {
   const [products, setProducts] = useState(null);
-  const {loading} = useProduct(productId);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${baseUrl}/products/category/${productCategory}?limit=4`)
@@ -15,8 +15,19 @@ export const RelatedProducts = ({productCategory, productId}) => {
       })
       .then((result) => {
         setProducts(result);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-  });
+  }, [setProducts, setLoading]);
+
+  if (loading === true) {
+    return (
+      <div className="container mx-auto px-4">
+        <Loader></Loader>
+      </div>
+    );
+  }
 
   if (products === null) {
     return (

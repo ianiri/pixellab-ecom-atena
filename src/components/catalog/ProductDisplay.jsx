@@ -48,7 +48,9 @@ export const ProductDisplay = ({ productId }) => {
 
         <div>
           <h1 className="text-center text-2xl text-black font-medium uppercase">{title}</h1>
-          <ProductRatings rate={rate} count={count}></ProductRatings>
+          <div className="flex justify-center">
+            <ProductRatings rate={rate} count={count}></ProductRatings>
+          </div>
 
           <div>
             <p className="my-8">{description}</p>

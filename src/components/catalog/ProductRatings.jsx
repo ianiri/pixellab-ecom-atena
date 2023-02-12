@@ -8,7 +8,7 @@ export const ProductRatings = ({rate, count}) => {
   };
 
   return (
-    <section className="flex justify-center items-center">
+    <section className="flex items-center">
       {Array(totalRatings)
         .fill('')
         .map((_, index) => {

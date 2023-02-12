@@ -2,6 +2,7 @@ import Head from 'next/head';
 import {CartControls} from '../components/cart/CartControls';
 import {CartDisplay} from '../components/cart/CartDisplay';
 import {CartTotals} from '../components/cart/CartTotals';
+import {ContinueShopping} from '../components/ui/ContinueShopping';
 import {Layout} from '../layouts/Layout';
 
 const CartPage = () => {
@@ -17,7 +18,7 @@ const CartPage = () => {
       <Layout>
         <main className="container px-4 mx-auto">
           <header className="flex justify-between">
-            <div>{/* de adaugat Continue shopping styled + func*/}</div>
+            <ContinueShopping></ContinueShopping>
             <CartControls></CartControls>
           </header>
 
@@ -35,6 +36,7 @@ const CartPage = () => {
               <div>
                 <button
                   type="button"
+                  className="w-full bg-black py-5 uppercase hover:text-white hover:font-bold"
                   title="Proceed to checkout"
                   onClick={() => {
                     console.log(cart);

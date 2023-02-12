@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {baseUrl} from "..";
+import { baseUrl } from '..';
+import { useEffect, useState } from 'react';
 
 export const useCart = (cartId = 2) => {
   const [cartProducts, setCartProducts] = useState([]);
@@ -22,4 +22,3 @@ export const useCart = (cartId = 2) => {
 
   return { cartProducts, loading, cartId };
 };
-
