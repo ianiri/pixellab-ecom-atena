@@ -38,7 +38,9 @@ export const CartLineItem = ({ cartProduct }) => {
       </td>
 
       <td>
-        <h1 className="text-black font-bold">{title}</h1>
+          <Link href={`/products/${productId}`} title={title}>
+            <h1 className="text-black font-bold">{title}</h1>
+          </Link>
         <div>
           <ProductRatings rate={rate} count={count}></ProductRatings>
         </div>
