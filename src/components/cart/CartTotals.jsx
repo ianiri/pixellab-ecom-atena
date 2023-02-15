@@ -11,9 +11,11 @@ export const CartTotals = () => {
   const { products, loading } = useProducts();
 
   if (loading) {
-    <div className="container mx-auto px-4">
-      <Loader></Loader>
-    </div>
+    return (
+      <div className="container mx-auto px-4">
+        <Loader></Loader>
+      </div>
+    );
   }
 
   const total = cartProducts.reduce((total, { quantity, productId }) => {
@@ -29,11 +31,11 @@ export const CartTotals = () => {
 
   return (
     <>
-      <div className="bg-zinc-100 px-5 py-2">
-        <h1 className="text-black font-bold uppercase">Cart Totals</h1>
-      </div>
-      <div>Total:
-        <ProductPrice product={{ price: total}}></ProductPrice>
+      <h1>Cart Totals</h1>
+
+      <div>
+        Total:
+        <ProductPrice product={{ price: total }}></ProductPrice>
       </div>
     </>
   );
