@@ -1,18 +1,11 @@
-import {baseUrl} from "@/src";
+import {useAddToCart} from "@/src/hooks";
 
 export const AddToCart = ({ product }) => {
-  const { title, id } = product;
+  const { title } = product;
+  const { addToCart, loading } = useAddToCart();
 
   const onClick = () => {
-    fetch(`${baseUrl}/carts/2`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        products: [{ productId: id, quantity: 1 }],
-      }),
-    });
+    addToCart(product);
   };
 
   return (
@@ -21,8 +14,9 @@ export const AddToCart = ({ product }) => {
       type="button"
       onClick={onClick}
       title={`Add ${title} to cart`}
+      disabled={loading}
     >
-      Add to Cart
+      {loading ? '...loading' : 'Add to cart'}
     </button>
   );
 };

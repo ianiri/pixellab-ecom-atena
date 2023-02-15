@@ -1,5 +1,5 @@
 import {useProduct} from '@/src/hooks';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import {ProductPrice} from '../catalog/ProductPrice';
 import {ProductRatings} from '../catalog/ProductRatings';

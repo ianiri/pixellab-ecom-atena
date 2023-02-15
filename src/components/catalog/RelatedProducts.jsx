@@ -19,7 +19,7 @@ export const RelatedProducts = ({productCategory, productId}) => {
       .finally(() => {
         setLoading(false);
       });
-  }, [setProducts, setLoading]);
+  }, [setProducts, productCategory, setLoading]);
 
   if (loading === true) {
     return (

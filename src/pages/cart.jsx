@@ -1,13 +1,14 @@
 import Head from 'next/head';
+import {useContext} from 'react';
 import {CartControls} from '../components/cart/CartControls';
 import {CartDisplay} from '../components/cart/CartDisplay';
 import {CartTotals} from '../components/cart/CartTotals';
 import {ContinueShopping} from '../components/ui/ContinueShopping';
+import {cartContext} from '../contexts/CartContex';
 import {Layout} from '../layouts/Layout';
 
 const CartPage = () => {
-  // const {cart } = useContext(CartCtonext)
-  const { cart } = { cart: [] };
+  const { cartProducts, loading } = useContext(cartContext);
 
   return (
     <>
@@ -34,16 +35,20 @@ const CartPage = () => {
               <CartTotals></CartTotals>
 
               <div>
-                <button
-                  type="button"
-                  className="w-full bg-black py-5 uppercase hover:text-white hover:font-bold"
-                  title="Proceed to checkout"
-                  onClick={() => {
-                    console.log(cart);
-                  }}
-                >
-                  Proceed to checkout
-                </button>
+                {!loading ? (
+                  <button
+                    type="button"
+                    className="w-full bg-black py-5 uppercase hover:text-white hover:font-bold transition-colors"
+                    title="Proceed to checkout"
+                    onClick={() => {
+                      console.log(cartProducts);
+                    }}
+                  >
+                    Proceed to checkout
+                  </button>
+                ) : (
+                  <></>
+                )}
               </div>
             </aside>
           </section>
