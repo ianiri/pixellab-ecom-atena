@@ -2,20 +2,29 @@
 import {useProduct} from '@/src/hooks';
 import { Separator } from '../ui';
 import Image from 'next/legacy/image';
-import {ProductPrice} from './ProductPrice';
+import {Price} from '../common/Price';
 import {AddToCart} from './AddToCart';
 import {Error404} from '../ui/Error404';
 import {Loader} from '../common/Loader';
 import {ProductRatings} from './ProductRatings';
 import {RelatedProducts} from './RelatedProducts';
+import {useContext} from 'react';
+import {cartContext} from '@/src/contexts/CartContex';
+import {RemoveFromCart} from './RemoveFromCart';
 
 export const ProductDisplay = ({ productId }) => {
   const { product, httpStatus, loading } = useProduct(productId);
+  const {cartProducts} = useContext(cartContext);
+
+  const cartProduct = cartProducts.find(({ productId }) => {
+    return productId === productId;
+  });
+
 
   if (loading) {
     return (
       <div className="container mx-auto px-4">
-        <Loader></Loader>
+        <Loader size="50"></Loader>
       </div>
     );
   }
@@ -55,11 +64,13 @@ export const ProductDisplay = ({ productId }) => {
           <div>
             <p className="my-8">{description}</p>
 
-            <ProductPrice product={product} className="text-2xl text-black font-bold"></ProductPrice>
+            <Price product={product} className="text-2xl text-black font-bold"></Price>
           </div>
 
           <div className="my-8">
-            <AddToCart product={product}></AddToCart>
+          {cartProduct.quantity > 1 ?
+              <RemoveFromCart product={product}></RemoveFromCart>
+            : <AddToCart product={product}></AddToCart>}
           </div>
         </div>
       </section>

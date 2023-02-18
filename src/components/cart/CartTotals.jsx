@@ -1,7 +1,7 @@
 import {cartContext} from "@/src/contexts/CartContex";
 import {useProducts} from "@/src/hooks";
 import {useContext} from "react";
-import {ProductPrice} from "../catalog/ProductPrice";
+import {Price} from "../common/Price";
 import {Loader} from "../common/Loader";
 
 export const CartTotals = () => {
@@ -13,7 +13,7 @@ export const CartTotals = () => {
   if (loading) {
     return (
       <div className="container mx-auto px-4">
-        <Loader></Loader>
+        <Loader size="50"></Loader>
       </div>
     );
   }
@@ -31,11 +31,13 @@ export const CartTotals = () => {
 
   return (
     <>
-      <h1>Cart Totals</h1>
+      <div className="bg-zinc-100 px-5 py-2">
+        <h1 className="text-black font-bold uppercase">Cart Totals</h1>
+      </div>
 
-      <div>
-        Total:
-        <ProductPrice product={{ price: total }}></ProductPrice>
+      <div className="py-4">
+        <span className="font-bold text-black mr-2 ">Total:</span>
+        <Price product={{ price: total }} className="text-black font-bold"></Price>
       </div>
     </>
   );

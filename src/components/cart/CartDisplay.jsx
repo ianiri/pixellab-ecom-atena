@@ -9,7 +9,7 @@ export const CartDisplay = () => {
   if (loading === true) {
     return (
       <div className="container mx-auto px-4">
-        <Loader></Loader>
+        <Loader size="50"></Loader>
       </div>
     );
   }

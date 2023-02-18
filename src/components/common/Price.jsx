@@ -1,4 +1,4 @@
-export const ProductPrice = ({ product, className }) => {
+export const Price = ({ product, className }) => {
   const { price } = product;
 
   return (

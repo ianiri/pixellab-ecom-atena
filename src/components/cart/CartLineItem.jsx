@@ -1,7 +1,7 @@
 import {useProduct} from '@/src/hooks';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
-import {ProductPrice} from '../catalog/ProductPrice';
+import {Price} from '../common/Price';
 import {ProductRatings} from '../catalog/ProductRatings';
 
 export const CartLineItem = ({ cartProduct }) => {
@@ -47,13 +47,15 @@ export const CartLineItem = ({ cartProduct }) => {
       </td>
 
       <td className="p-5">
-        <ProductPrice product={{ price }} className="text-black font-bold"></ProductPrice>
+        <Price product={{ price }} className="text-black font-bold"></Price>
       </td>
 
-      <td>{quantity}</td>
+      <td className="p-5">
+        <span className="text-black font-bold">{quantity}</span>
+      </td>
 
       <td className="p-5">
-        <ProductPrice product={{ price: quantity * price }} className="text-black font-bold"></ProductPrice>
+        <Price product={{ price: quantity * price }} className="text-black font-bold"></Price>
       </td>
     </tr>
   );

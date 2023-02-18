@@ -3,7 +3,7 @@ export * from './ProductGrid';
 export * from './GridControls';
 export * from './ProductDisplay';
 export * from './AddToCart';
-export * from './ProductPrice';
 export * from './ProductRatings';
 export * from './RelatedProducts';
 export * from './Pagination';
+export * from './RemoveFromCart';
