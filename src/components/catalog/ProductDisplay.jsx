@@ -8,18 +8,10 @@ import {Error404} from '../ui/Error404';
 import {Loader} from '../common/Loader';
 import {ProductRatings} from './ProductRatings';
 import {RelatedProducts} from './RelatedProducts';
-import {useContext} from 'react';
-import {cartContext} from '@/src/contexts/CartContex';
 import {RemoveFromCart} from './RemoveFromCart';
 
 export const ProductDisplay = ({ productId }) => {
   const { product, httpStatus, loading } = useProduct(productId);
-  const {cartProducts} = useContext(cartContext);
-
-  const cartProduct = cartProducts.find(({ productId }) => {
-    return productId === productId;
-  });
-
 
   if (loading) {
     return (
@@ -68,9 +60,8 @@ export const ProductDisplay = ({ productId }) => {
           </div>
 
           <div className="my-8">
-          {cartProduct.quantity > 1 ?
-              <RemoveFromCart product={product}></RemoveFromCart>
-            : <AddToCart product={product}></AddToCart>}
+            <RemoveFromCart product={product}></RemoveFromCart>
+            <AddToCart product={product}></AddToCart>
           </div>
         </div>
       </section>

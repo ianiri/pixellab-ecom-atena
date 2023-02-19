@@ -1,9 +1,20 @@
+import {cartContext} from "@/src/contexts/CartContex";
 import {useAddToCart} from "@/src/hooks";
+import {useContext} from "react";
 import {Loader} from "../common/Loader";
 
 export const AddToCart = ({ product }) => {
-  const { title } = product;
+  const { title, id } = product;
   const { addToCart, loading } = useAddToCart();
+  const {cartProducts} = useContext(cartContext);
+
+  const cartProduct = cartProducts.find(({ productId }) => {
+    return productId === id;
+  });
+
+  if (cartProduct) {
+    return <></>
+  }
 
   const onClick = () => {
     addToCart(product);
@@ -17,7 +28,7 @@ export const AddToCart = ({ product }) => {
       title={`Add ${title} to cart`}
       disabled={loading}
     >
-      <span className="block w-24">
+      <span className="block w-36">
         {loading ?
           <Loader size="20"></Loader>
         : 'Add to cart'}

@@ -3,20 +3,11 @@ import Link from 'next/link';
 import {AddToCart} from './AddToCart';
 import {Price} from '../common/Price';
 import {RemoveFromCart} from './RemoveFromCart';
-import {useContext} from 'react';
-import {cartContext} from '@/src/contexts/CartContex';
 
 export const ProductTile = ({ product, path }) => {
   const { title, image, id } = product;
-  const {cartProducts} = useContext(cartContext);
 
-  const cartProduct = cartProducts.find(({ productId }) => {
-    return productId === id;
-  });
-
-  console.log(cartProduct, 'cartProduct TILE')
-
-  return (
+   return (
     <article className="h-full flex flex-col justify-between items-center text-center">
       <header>
         <div>
@@ -44,9 +35,8 @@ export const ProductTile = ({ product, path }) => {
       </section>
 
       <footer className="mt-2">
-      {cartProduct ?
-          <RemoveFromCart product={product}></RemoveFromCart>
-        : <AddToCart product={product}></AddToCart>}
+        <RemoveFromCart product={product}></RemoveFromCart>
+        <AddToCart product={product}></AddToCart>
       </footer>
     </article>
   );
