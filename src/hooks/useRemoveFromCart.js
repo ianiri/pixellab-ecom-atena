@@ -15,9 +15,14 @@ export const useRemoveFromCart = () => {
       return productId === product.id;
     });
 
-    if (cartProduct.quantity > 1) {
-      cartProduct.quantity -= quantity;
-    } else {
+    // if (cartProduct.quantity > 1) {
+    //   cartProduct.quantity -= quantity;
+    // } else {
+    //   const index = newProducts.indexOf(cartProduct);
+    //   newProducts.splice(index, 1);
+    // }
+
+    if (cartProduct) {
       const index = newProducts.indexOf(cartProduct);
       newProducts.splice(index, 1);
     }
